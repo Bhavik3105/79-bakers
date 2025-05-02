@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add your global custom styles below */
+body {
+  background-color: #fff1f2;
+  /* light pastel pink */
+}
