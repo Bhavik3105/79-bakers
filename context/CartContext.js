@@ -28,8 +28,38 @@ export function CartProvider({ children }) {
         setCartItems(cartItems.filter(item => item.name !== name));
     };
 
+    // ✅ Add: Increment item quantity
+    const incrementItem = (name) => {
+        setCartItems((prevItems) =>
+            prevItems.map((item) =>
+                item.name === name ? { ...item, quantity: item.quantity + 1 } : item
+            )
+        );
+    };
+
+    // ✅ Add: Decrement item quantity
+    const decrementItem = (name) => {
+        setCartItems((prevItems) =>
+            prevItems.map((item) =>
+                item.name === name && item.quantity > 1
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            )
+        );
+    };
+
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, toggleCart, isCartOpen, removeItem }}>
+        <CartContext.Provider
+            value={{
+                cartItems,
+                addToCart,
+                toggleCart,
+                isCartOpen,
+                removeItem,
+                incrementItem,   // 👈 expose
+                decrementItem    // 👈 expose
+            }}
+        >
             {children}
         </CartContext.Provider>
     );

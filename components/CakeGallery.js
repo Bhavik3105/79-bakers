@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { useCart } from '@/context/CartContext'; // 👈 import useCart
+import { useCart } from '@/context/CartContext';
 
 const cakes = [
   { name: "Dark Chocolate", image: "/images/cakes/dark-chocolate.jpeg", price: 500, soldOut: false },
@@ -12,7 +12,7 @@ const cakes = [
 
 export default function CakeGallery() {
   const [quantities, setQuantities] = useState(cakes.map(() => 1));
-  const { addToCart } = useCart(); // 👈 use addToCart from context
+  const { addToCart } = useCart(); // We only add to cart, not open it here
 
   const handleQuantityChange = (index, value) => {
     const newQuantities = [...quantities];
@@ -21,7 +21,7 @@ export default function CakeGallery() {
   };
 
   const handleBuyNow = (cake, quantity) => {
-    addToCart(cake, quantity); // 👈 Add to cart
+    addToCart(cake, quantity); // ✅ Do NOT open cart here
     const total = cake.price * quantity;
     toast.success(`Added ${quantity} x ${cake.name} (₹${total}) to cart! 🎂`);
   };
@@ -31,7 +31,7 @@ export default function CakeGallery() {
       {cakes.map((cake, index) => (
         <div
           key={index}
-          className="relative bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center"
+          className="relative bg-white rounded-xl shadow-md p-4 flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
         >
           {cake.soldOut && (
             <span className="absolute top-4 left-4 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
@@ -42,7 +42,7 @@ export default function CakeGallery() {
           <img
             src={cake.image}
             alt={cake.name}
-            className="w-64 h-64 object-cover rounded-md"
+            className="w-64 h-64 object-cover rounded-md transition-transform duration-300 hover:scale-105"
           />
 
           <h2 className="mt-4 text-lg font-semibold">{cake.name}</h2>
