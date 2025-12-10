@@ -4,11 +4,11 @@ import CartSidebar from './CartSidebar'; // 👈 Add this import
 
 export default function Layout({ children }) {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <CartSidebar /> {/* 👈 Add CartSidebar after Navbar */}
-      <main className="min-h-screen">{children}</main>
+      <CartSidebar />
+      {children}
       <Footer />
-    </>
+    </div>
   );
 }

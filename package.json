@@ -7,14 +7,22 @@
     "start": "next start"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "clsx": "^2.1.1",
+    "cookie": "^1.0.2",
     "framer-motion": "^12.12.1",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.503.0",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.19.2",
     "next": "latest",
+    "nodemailer": "^7.0.10",
     "react": "latest",
     "react-dom": "latest",
     "react-hot-toast": "^2.5.2",
     "react-slick": "^0.30.3",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
